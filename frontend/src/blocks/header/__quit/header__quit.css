@@ -1,0 +1,14 @@
+.header__quit {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #A9A9A9;
+  transition: opacity 0.2s linear;
+  margin: 0;
+}
+
+.header__quit:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}

@@ -1,0 +1,17 @@
+.header__dropdownButton {
+  display: none;
+  border: none;
+  grid-area: profile;
+  justify-self: end;
+}
+
+@media screen and (max-width: 800px) {
+.header__dropdownButton {
+  display: block;
+  background-color: rgba(0, 0, 0, 0);
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
+  padding: 0;
+  }
+}

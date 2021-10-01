@@ -1,0 +1,33 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  grid-template-areas: 
+  'logo profile';
+  max-width: 880px;
+  width: 100%;
+  padding: 45px 0 41px;
+  border-bottom: 1px solid rgba(84, 84, 84, .7);
+}
+
+@media screen and (max-width: 800px) {
+  .header {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content min-content;
+    grid-template-areas:
+    'dropdown dropdown'
+    'logo profile';
+  }
+}
+
+@media screen and (max-width: 918px) {
+  .header {
+    width: 88%;
+  }
+}
+
+@media screen and (max-width: 552px) {
+  .header {
+    padding: 28px 0 31.6px;
+  }
+}
