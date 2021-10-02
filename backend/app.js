@@ -11,6 +11,7 @@ const auth = require('./middlewares/auth');
 const errorsHandler = require('./middlewares/errorsHandler');
 const NotFoundError = require('./utils/customErrors/NotFoundError');
 const { loginJoi, createUserJoi } = require('./utils/joiValidatorTemplates');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -21,6 +22,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
+
+app.use(requestLogger);
 
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -36,6 +39,7 @@ app.use('/cards', auth, cardsRoutes);
 app.use('*', (req, res, next) => {
   next(new NotFoundError('Запрашиваемый ресурс не найден'));
 });
+app.use(errorLogger);
 
 app.use(errors());
 app.use(errorsHandler);
