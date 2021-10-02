@@ -65,7 +65,7 @@ class Api {
   likeStatus(cardId, likeStatus) {
     const method = likeStatus ? 'PUT' : 'DELETE';
     
-    return fetch(`${this._options.baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${this._options.baseUrl}/cards/${cardId}/likes`, {
       method: method,
       headers: this._options.headers
     })

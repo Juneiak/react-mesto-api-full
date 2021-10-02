@@ -12,6 +12,7 @@ const errorsHandler = require('./middlewares/errorsHandler');
 const NotFoundError = require('./utils/customErrors/NotFoundError');
 const { loginJoi, createUserJoi } = require('./utils/joiValidatorTemplates');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const corsHandler = require('./middlewares/corsPolicy');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -23,8 +24,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
+app.use(corsHandler);
 app.use(requestLogger);
-
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
