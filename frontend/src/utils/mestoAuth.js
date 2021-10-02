@@ -1,4 +1,4 @@
-const baseUrl = 'https://auth.nomoreparties.co'
+import { apiOptions } from "./constants";
 
 const checkResponse = res => {
   try {
@@ -10,7 +10,7 @@ const checkResponse = res => {
 }
 
 export const register = (email, password) => {
-  return fetch(`${baseUrl}/signup`, {
+  return fetch(`${apiOptions.baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-type": "application/json"
@@ -21,7 +21,7 @@ export const register = (email, password) => {
 }
 
 export const login = (email, password) => {
-  return fetch(`${baseUrl}/signin`, {
+  return fetch(`${apiOptions.baseUrl}/signin`, {
     method: 'POST',
     headers: {
       "Content-Type": "application/json"
@@ -32,7 +32,7 @@ export const login = (email, password) => {
 }
 
 export const checkToken = token => {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${apiOptions.baseUrl}/users/me`, {
     method: 'GET',
     headers: {
       "Content-type": "application/json",
