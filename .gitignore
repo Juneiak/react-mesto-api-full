@@ -31,7 +31,6 @@ node_modules
 # production
 /frontend/*
 !/frontend/build/
-/backup
 
 # misc
 .DS_Store

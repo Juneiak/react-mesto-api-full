@@ -1,0 +1,8 @@
+.element__about {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 86%;
+  align-items: center;
+  padding: 7.5% 0 7.5%;
+}

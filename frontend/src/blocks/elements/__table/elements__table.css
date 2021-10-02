@@ -1,0 +1,13 @@
+.elements__table {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+  display: grid;
+  row-gap: 20px;
+  column-gap: 17px;
+  grid-template-columns: repeat(auto-fit, minmax(225.6px, max-content));
+  grid-auto-rows: 1fr;
+  justify-content: center;
+  justify-items: center;
+}
