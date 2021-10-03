@@ -27,7 +27,6 @@ class Api {
 
   getInitialCards() {
     const token = localStorage.getItem('jwt')
-    console.log(token);
     return fetch(`${this._options.baseUrl}/cards`, {
       method: 'GET',
       headers: {

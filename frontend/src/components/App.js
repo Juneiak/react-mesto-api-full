@@ -20,6 +20,7 @@ function App() {
       .then(res => {
         toggleLogin(true)
         history.push('/')
+        console.log(res.data)
         setAccountData(res.data)
       })
       .catch(err => {
