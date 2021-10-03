@@ -14,25 +14,37 @@ class Api {
   }
 
   getUserProfileData() {
+    const token = localStorage.getItem('jwt')
     return fetch(`${this._options.baseUrl}/users/me`, {
       method: 'GET',
-      headers: this._options.headers
+      headers: {
+        authorization: token,
+        'Content-Type': 'application/json'
+      }
     })
       .then(this._checkStatus)
   };
 
   getInitialCards() {
+    const token = localStorage.getItem('jwt')
     return fetch(`${this._options.baseUrl}/cards`, {
       method: 'GET',
-      headers: this._options.headers
+      headers: {
+        authorization: token,
+        'Content-Type': 'application/json'
+      }
     })
       .then(this._checkStatus)
   };
 
   editPrifile(dataForEdit) {
+    const token = localStorage.getItem('jwt')
     return fetch(`${this._options.baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: this._options.headers,
+      headers: {
+        authorization: token,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: dataForEdit['name'],
         about: dataForEdit['about']
@@ -42,9 +54,13 @@ class Api {
   }
 
   addCard(dataForAdd) {
+    const token = localStorage.getItem('jwt')
     return fetch(`${this._options.baseUrl}/cards`, {
       method: 'POST',
-      headers: this._options.headers,
+      headers: {
+        authorization: token,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: dataForAdd['name'],
         link: dataForAdd['link']
@@ -54,28 +70,40 @@ class Api {
   }
 
   deleteCard(cardId) {
+    const token = localStorage.getItem('jwt')
     return fetch(`${this._options.baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
-      headers: this._options.headers
+      headers: {
+        authorization: token,
+        'Content-Type': 'application/json'
+      }
     })
       .then(this._checkStatus)
       
   };
   
   likeStatus(cardId, likeStatus) {
+    const token = localStorage.getItem('jwt')
     const method = likeStatus ? 'PUT' : 'DELETE';
     
     return fetch(`${this._options.baseUrl}/cards/${cardId}/likes`, {
       method: method,
-      headers: this._options.headers
+      headers: {
+        authorization: token,
+        'Content-Type': 'application/json'
+      }
     })
       .then(this._checkStatus)
   }
 
   changeAvatar(newAvatarUrl) {
+    const token = localStorage.getItem('jwt')
     return fetch(`${this._options.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._options.headers,
+      headers: {
+        authorization: token,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         avatar: newAvatarUrl
       })
