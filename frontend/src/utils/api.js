@@ -18,7 +18,7 @@ class Api {
     return fetch(`${this._options.baseUrl}/users/me`, {
       method: 'GET',
       headers: {
-        "Authorization": `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
     })
@@ -31,7 +31,7 @@ class Api {
     return fetch(`${this._options.baseUrl}/cards`, {
       method: 'GET',
       headers: {
-        "Authorization": `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
     })
@@ -43,7 +43,7 @@ class Api {
     return fetch(`${this._options.baseUrl}/users/me`, {
       method: 'PATCH',
       headers: {
-        "Authorization": `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -59,7 +59,7 @@ class Api {
     return fetch(`${this._options.baseUrl}/cards`, {
       method: 'POST',
       headers: {
-        "Authorization": `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -75,7 +75,7 @@ class Api {
     return fetch(`${this._options.baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: {
-        "Authorization": `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
     })
@@ -90,7 +90,7 @@ class Api {
     return fetch(`${this._options.baseUrl}/cards/${cardId}/likes`, {
       method: method,
       headers: {
-        "Authorization": `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
     })
@@ -102,7 +102,7 @@ class Api {
     return fetch(`${this._options.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
-        "Authorization": `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
