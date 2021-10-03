@@ -48,9 +48,9 @@ const getUser = (req, res, next) => {
 
 const createUser = (req, res, next) => {
   const {
-    name,
-    about,
-    avatar,
+    name = 'empty',
+    about = 'empty',
+    avatar = 'https://images.unsplash.com/photo-1633102006375-fb2b8ea1082b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1854&q=80',
     email,
     password,
   } = req.body;
