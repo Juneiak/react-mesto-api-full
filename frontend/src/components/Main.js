@@ -20,9 +20,12 @@ function Main(props) {
     
       <section className="elements">
         <ul className="elements__table">
-        {props.cards.map((card) => (
+        {props.cards.length > 0 
+        ? props.cards.map((card) => (
           <Card key={card._id} onCardDeleteClick={props.onCardDeleteClick}  onCardLike={props.onCardLike} card={card} onCardClick={props.onCardClick}/>
-        ))}
+        ))
+        : <div>nothing to render</div>
+        }
         </ul>
       </section>
   </main>
