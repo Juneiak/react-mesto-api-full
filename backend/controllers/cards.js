@@ -6,7 +6,7 @@ const BadRequestError = require('../utils/customErrors/BadRequestError');
 const getCards = (req, res, next) => {
   Card.find({})
     .populate(['owner', 'likes'])
-    .then((dataOfCards) => res.send({ data: dataOfCards }))
+    .then((data) => res.send(data))
     .catch(next);
 };
 
@@ -14,7 +14,7 @@ const createCard = (req, res, next) => {
   const { name, link } = req.body;
   const { _id } = req.user;
   Card.create({ name, link, owner: _id })
-    .then((createdCardData) => res.send({ data: createdCardData }))
+    .then((createdCardData) => res.send(createdCardData))
     .catch((err) => {
       if (err.name === 'ValidationError') throw new BadRequestError('Ошибка валидации вводимых данных');
       next(err);
@@ -50,7 +50,7 @@ const setLike = (req, res, next) => {
     { new: true },
   )
     .orFail(new NotFoundError('Карточка по указанному _id не найден.'))
-    .then((updatedData) => res.send({ data: updatedData }))
+    .then((updatedData) => res.send(updatedData))
     .catch((err) => {
       if (err.name === 'ValidationError') throw new BadRequestError('Переданы некорректные данные для постановки/снятии лайка.');
       if (err.name === 'CastError') throw new BadRequestError('Ошибка валидации id');
@@ -68,7 +68,7 @@ const removeLike = (req, res, next) => {
     { new: true },
   )
     .orFail(new NotFoundError('Карточка по указанному _id не найден.'))
-    .then((updatedData) => res.send({ data: updatedData }))
+    .then((updatedData) => res.send(updatedData))
     .catch((err) => {
       if (err.name === 'ValidationError') throw new BadRequestError('Переданы некорректные данные для постановки/снятии лайка.');
       if (err.name === 'CastError') throw new BadRequestError('Ошибка валидации id');

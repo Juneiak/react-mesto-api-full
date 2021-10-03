@@ -10,7 +10,7 @@ const getUserInfo = (req, res, next) => {
   User.findById(_id)
     .orFail(new NotFoundError('Пользователь по указанному _id не найден.'))
     .then((userData) => res.send({
-      user: {
+      data: {
         name: userData.name,
         about: userData.about,
         avatar: userData.avatar,
@@ -30,7 +30,7 @@ const getUser = (req, res, next) => {
   User.findById(userId)
     .orFail(new NotFoundError('Пользователь по указанному _id не найден.'))
     .then((userData) => res.send({
-      user: {
+      data: {
         name: userData.name,
         about: userData.about,
         avatar: userData.avatar,
@@ -81,7 +81,7 @@ const createUser = (req, res, next) => {
 
 const getUsers = (req, res, next) => {
   User.find({})
-    .then((usersData) => res.send({ users: usersData }))
+    .then((usersData) => res.send(usersData))
     .catch(next);
 };
 
@@ -93,7 +93,7 @@ const updateProfile = (req, res, next) => {
     runValidators: true,
   })
     .orFail(new NotFoundError('Пользователь по указанному _id не найден.'))
-    .then((updatedData) => res.send({ updatedProfileData: updatedData }))
+    .then((updatedData) => res.send(updatedData))
     .catch((err) => {
       if (err.name === 'ValidationError') throw new BadRequestError('Переданы некорректные данные при обновлении профиля.');
       if (err.name === 'CastError') throw new BadRequestError('Ошибка валидации id');
@@ -110,7 +110,7 @@ const updateAvatar = (req, res, next) => {
     runValidators: true,
   })
     .orFail(new NotFoundError('Пользователь по указанному _id не найден.'))
-    .then((updatedData) => res.send({ data: updatedData }))
+    .then((updatedData) => res.send(updatedData))
     .catch((err) => {
       if (err.name === 'ValidationError') throw new BadRequestError('Переданы некорректные данные при обновлении аватара.');
       if (err.name === 'CastError') throw new BadRequestError('Ошибка валидации id');

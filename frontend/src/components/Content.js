@@ -116,7 +116,7 @@ function Content() {
     async function setData() {
       try {
         const userData = await api.getUserProfileData()
-        setUserInfo(userData)
+        setUserInfo(userData.data)
       } catch(e) {
         console.error(`error: ${e}`)
       }
