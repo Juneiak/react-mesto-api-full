@@ -16,7 +16,7 @@ function Header({loggedIn, ...props}) {
   function signOut() {
     props.onSignOut(false)
     localStorage.removeItem('jwt')
-    history.push('sign-in')
+    history.push('signin')
   }
 
   return (
@@ -24,8 +24,8 @@ function Header({loggedIn, ...props}) {
       <img className="header__image" src={logo} alt="Логотип 'mesto'" />
       <div className={`header__profile ${isDropdownOpen && "header__profile_open"}`}>
         {loggedIn && <p className="header__email">{props.data.email}</p>}
-        {!loggedIn &&  location.pathname !== '/sign-up' && <Link className="header__link" to="/sign-up">Регистрация</Link>}
-        {loggedIn ? <p onClick={signOut} className="header__quit">Выйти</p> : (location.pathname !== '/sign-in' && <Link className="header__link" to="/sign-in">Войти</Link>)}
+        {!loggedIn &&  location.pathname !== '/signup' && <Link className="header__link" to="/signup">Регистрация</Link>}
+        {loggedIn ? <p onClick={signOut} className="header__quit">Выйти</p> : (location.pathname !== '/signin' && <Link className="header__link" to="/signin">Войти</Link>)}
       </div>
       <button
         onClick={handlerDropdownClick}

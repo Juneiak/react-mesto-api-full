@@ -17,7 +17,7 @@ function Register(props) {
 
   function handleOkClose() {
     props.onPopupClose()
-    history.push('/sign-in')
+    history.push('/signin')
   }
 
   function handleSubmit(evt) {

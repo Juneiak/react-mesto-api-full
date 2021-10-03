@@ -6,7 +6,6 @@ import React from 'react';
 import ProtectedRoute from './hocs/ProtectedRoute';
 import {Route, Switch, Redirect, useHistory} from 'react-router-dom';
 import * as mestoAuth from '../utils/mestoAuth.js';
-
 function App() {
 
   const [loggedIn, toggleLogin] = React.useState(false)
@@ -25,7 +24,7 @@ function App() {
       })
       .catch(err => {
         console.error(err)
-        history.push('/sign-in')
+        history.push('/signin')
       })
     }
   }, [loggedIn])
@@ -76,7 +75,7 @@ function App() {
         <Header loggedIn={loggedIn} onSignOut={toggleLogin} data={accountData} />
         <Switch>
 
-          <Route path="/sign-in">
+          <Route path="/signin">
             <Login  
               onSubmit={handleLoginSubmit}
               status={popupStatus}
@@ -84,7 +83,7 @@ function App() {
               onPopupClose={handlePopupClose} />
           </Route>
           
-          <Route path="/sign-up">
+          <Route path="/signup">
             <Register
               onSubmit={handleRegisterSubmit}
               status={popupStatus}
@@ -99,7 +98,7 @@ function App() {
           />
     
           <Route path='/'>
-            {loggedIn ? <Redirect to='/' /> : <Redirect to="/sign-in" />}
+            {loggedIn ? <Redirect to='/' /> : <Redirect to="/signin" />}
           </Route>
 
         </Switch>
