@@ -1,4 +1,5 @@
 const allowedCors = [
+  'https://projectmesto21.nomoredomains.club',
   'http://projectmesto21.nomoredomains.club',
   'http://localhost:3000',
   'http://127.0.0.1:3000',
