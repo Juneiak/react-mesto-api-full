@@ -6,17 +6,16 @@ const allowedCors = [
 
 const corsHandler = (req, res, next) => {
   const { headers, method } = req;
-
-  if (allowedCors.includes(headers.origin)) {
-    res.header('Access-Control-Allow-Origin', headers.origin);
-  }
+  const requestHeaders = headers['access-control-request-headers'];
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   if (method === 'OPTIONS') {
-    const requestHeaders = headers['access-control-request-headers'];
-    const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders);
-
-    return res.end();
+    res.end();
+    return
+  }
+  if (allowedCors.includes(headers.origin)) {
+    res.header('Access-Control-Allow-Origin', headers.origin);
   }
   next();
 };
