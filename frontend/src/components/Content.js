@@ -80,6 +80,7 @@ function Content() {
   function handleAddCard(newCardData, clearPopup) {
     api.addCard(newCardData)
       .then(newCard => {
+        newCard.owner = currentUser;
         setCards([newCard, ...cards])
         clearPopup()
         closeAllPopups()
