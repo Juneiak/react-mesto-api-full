@@ -84,9 +84,7 @@ function Content() {
         clearPopup()
         closeAllPopups()
       })
-      .then(e => {
-        console.error(e)
-      })
+      .catch(e => console.error(e))
   }
 
   function handleCardLike(card) {
@@ -94,9 +92,17 @@ function Content() {
     async function toggleLike() {
       try {
         const updatedCard = await api.likeStatus(card._id, !isLiked)
-        setCards(cards => cards.map(c => c._id === updatedCard._id ? updatedCard : c))
+        const newArray = cards.map(c => {
+          if (c._id === updatedCard._id) {
+            if (!isLiked) c.likes.push(currentUser)
+            else c.likes = c.likes.filter(user => user._id !== currentUser._id)
+            return c
+          } 
+          return c
+        })
+        setCards(newArray)
       } catch(e) {
-        console.error(e)
+        console.error(`${e} like`)
       }
     }
     toggleLike()
@@ -126,7 +132,7 @@ function Content() {
     async function setInitialCards() {
       try {
         const initialCards = await api.getInitialCards();
-        setCards(initialCards);
+        setCards(initialCards.reverse());
       } catch(e) {
         console.error(e);
       };

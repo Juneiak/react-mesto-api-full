@@ -5,6 +5,7 @@ const NotFoundError = require('../utils/customErrors/NotFoundError');
 const ConflictError = require('../utils/customErrors/ConflictError');
 const BadRequestError = require('../utils/customErrors/BadRequestError');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
 const getUserInfo = (req, res, next) => {
   const { _id } = req.user;
   User.findById(_id)
@@ -123,12 +124,18 @@ const login = (req, res, next) => {
   const { email, password } = req.body;
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, 'some-secret-key', { expiresIn: '7d' });
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key',
+        { expiresIn: '7d' }
+      );
+
       // res.cookie('jwtToken', token, {
       //   maxAge: 3600000 * 24 * 7,
       //   httpOnly: true,
       //   sameSite: true,
       // });
+
       res.send({ token });
     })
     .catch((err) => {
