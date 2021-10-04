@@ -7,7 +7,7 @@ const allowedCors = [
 const corsHandler = (req, res, next) => {
   const { headers, method } = req;
 
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', "*");
 
   if (method === 'OPTIONS') {
     const requestHeaders = headers['access-control-request-headers'];
