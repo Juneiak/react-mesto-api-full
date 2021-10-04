@@ -1,4 +1,4 @@
-require('dotenv').config();
+//require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -32,11 +32,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
+// app.get('/crash-test', () => {
+//   setTimeout(() => {
+//     throw new Error('Сервер сейчас упадёт');
+//   }, 0);
+// });
 
 app.post('/signin', celebrate(loginJoi), login);
 app.post('/signup', celebrate(createUserJoi), createUser);
@@ -53,5 +53,5 @@ app.use(errors());
 app.use(errorsHandler);
 
 app.listen(PORT, () => {
-  ('listen port 3000');
+  console.log('listen port 3000');
 });
