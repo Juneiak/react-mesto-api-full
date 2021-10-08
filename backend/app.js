@@ -52,5 +52,5 @@ app.use(errors());
 app.use(errorsHandler);
 
 app.listen(PORT, () => {
-  console.log('listen port 3000');
+  ('listen port 3000');
 });

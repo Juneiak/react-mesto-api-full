@@ -39,11 +39,12 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+    select: false,
   },
 });
 
 userSchema.statics.findUserByCredentials = function (email, password) {
-  return this.findOne({ email })
+  return this.findOne({ email }).select('+password')
     .orFail(new UnauthorizedError('Некорректные данные аккаунта'))
     .then((user) => (bcrypt.compare(password, user.password)
       .then((matched) => {

@@ -20,6 +20,7 @@ const corsHandler = (req, res, next) => {
     return res.end();
   }
   next();
+  return 'end';
 };
 
 module.exports = corsHandler;
