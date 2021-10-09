@@ -5,4 +5,4 @@ site - https://projectmesto21.nomoredomains.club/
 
 api - https://api.projectmesto21.nomoredomains.club/
 
-Публичный IPv4 - 178.154.231.129
+Публичный IPv4 - 84.201.159.188
